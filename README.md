@@ -32,4 +32,4 @@ Authentication Routes
 
 ## Example
 
-- I have attached the run time example image in the assets directory `../src/assets/Reset-Mail.png`
+- I have attached the run time example image in the assets directory
