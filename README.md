@@ -30,8 +30,14 @@ Authentication Routes
 - `/reset-password/:token`
 - Description: Resets the password using the provided token.
 
-## Example
+## Explaination And Examples
 
 - To use the URL you need to connect with database from back-end for testing.
-- I have tested with my gmail id.
-- I have attached the run time example image in the assets in src directory.
+- I have tested with my gmail id which was stored in database.
+- I have attached the run time example image in the assets folder in src directory `../src/assets`.
+- I have stored my gmail in databse before giving reset link `../src/assets/before-password-reset.png`.
+- To send reset link for forgot password `../src/assets/reset-password.png`.
+- The reset link was given to user by using nodemailer for sending email `../src/assets/reset-link-mail.png`.
+- The token was generated and token will expire after 1 hour in database `../src/assets/token-for-reset.png`.
+- After that using the link we can route to reset password page `../src/assets/forgot-password.png`.
+- After that password was sucessfully reseted and token was cleared password was bcrypt(hashed) and stored in database `../src/assets/after-password-reset.png`.
