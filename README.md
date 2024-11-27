@@ -32,4 +32,6 @@ Authentication Routes
 
 ## Example
 
+- To use the URL you need to connect with database from back-end for testing.
+- I have tested with my gmail id.
 - I have attached the run time example image in the assets in src directory.
