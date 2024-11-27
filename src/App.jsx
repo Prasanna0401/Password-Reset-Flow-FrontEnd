@@ -1,18 +1,38 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ForgetPassword from './components/ForgetPassword';
 import ResetPassword from './components/ResetPassword';
 
+const routes = [
+  {
+    path: "/",
+    element: <ForgetPassword />,
+  },
+  {
+    path: "/reset-password/:token",
+    element: <ResetPassword />
+  }
+];
+
+const router = createBrowserRouter(routes, {
+  future: {
+    v7_relativeSplatPath: true,
+    v7_fetcherPersist: true,
+    v7_normalizeFormMethod: true,
+    v7_partialHydration: true,
+    v7_skipActionStatusRevalidation: true,
+    v7_skipActionErrorRevalidation: true,
+  }
+});
+
 const App = () => {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<ForgetPassword />} />
-          <Route path="/reset-password/:token" element={<ResetPassword />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
-};
+    <RouterProvider
+      router={router}
+      future={{
+        v7_startTransition: true,
+      }}
+    />
+  )
+}
 
 export default App;
