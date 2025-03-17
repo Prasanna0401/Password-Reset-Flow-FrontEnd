@@ -1,43 +1,54 @@
-## Password Reset Flow Application
+# Password Reset Flow - FrontEnd
 
-This is a full-stack application that implements a password reset flow with email verification. The front-end is built with React and styled using Tailwind CSS, while the back-end is powered by Node js, Express and MongoDB for database.
+This project implements a password reset flow that includes email verification and updating the user's password securely in the database.
+
+## Table of Contents
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Setup and Installation](#setup-and-installation)
+- [Routes](#Route-Values)
 
 ## Features
+- **User Registration Form**: Register new users with hashed passwords. 
+- **User Login Form**: Authenticate users and issue JWTs for authorized access. These were done by Backend.
+- **JWT-Based Authorization**: Protect routes using httpOnly tokens.
+- **Secure User Info Retrieval**: Users can retrieve their information using valid tokens.
+- **Error Handling and Validation**: Proper error messages and input validations.
+- **Route Documentation**: Detailed documentation using Postman, with sample requests and responses.
 
-- User can request a password reset link via email.
-- Users can reset their password using a secure link.
-- Password reset token has an expiry time.
-- Responsive UI built with Tailwind CSS.
+## Tech Stack
+- **React**: JavaScript library for building the user interface.
+- **React Router**: For handling navigation and routing between pages.
+- **Tailwind CSS**: For styling the app, making it responsive.
 
-## Technologies
+## Setup and Installation
 
-- Front-End: React, Tailwind CSS
-- Back-End: Node js, Express, MongoDB
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Prasanna0401/Password-Reset-Flow-FrontEnd.git
+   ```
 
-## Usage
+2. Install dependencies:
 
-- Open your browser and navigate to URL
-- Use the "Reset Password" feature to enter your email and receive a password reset link.
-- Follow the link in your email to reset your password.
+    ```bash 
+    npm install axios
+    npm install react-router-dom
+    npm install validator
+    ```
 
-## API Endpoints
+4. Run the Application
+    ```bash
+    npm run dev
+    ```
 
-Authentication Routes
+## Routes
+    baseURL:https://passwordresetflowfe.netlify.app/
+1. [Home Route](https://passwordresetflowfe.netlify.app/) `('/')`-> **Home URL**
+2. [Login Route](https://passwordresetflowfe.netlify.app/signin) `('/signin')`-> **Login URL**
+3. [Registration Route](https://passwordresetflowfe.netlify.app/register) `('/register')`-> **Registration URL**
+4. [Forget Password Route](https://passwordresetflowfe.netlify.app/PasswordReset) `('/PasswordReset')`-> **Forget Password URL**
+4. [UserInfo Route](https://passwordresetflowfe.netlify.app/userInfo) `('/userInfo')`-> **Get User Information URL** - This is a protected route. It works only when the user is logged in.
 
-- `/`
-- Description: Sends a password reset link to the provided email address.
-
-- `/reset-password/:token`
-- Description: Resets the password using the provided token.
-
-## Explaination And Examples
-
-- To use the URL you need to connect with database from back-end for testing.
-- I have tested with my gmail id which was stored in database.
-- I have attached the run time example image in the assets folder in src directory `../src/assets`.
-- I have stored my gmail in databse before giving reset link `../src/assets/before-password-reset.png`.
-- To send reset link for forgot password `../src/assets/reset-password.png`.
-- The reset link was given to user by using nodemailer for sending email `../src/assets/reset-link-mail.png`.
-- The token was generated and token will expire after 1 hour in database `../src/assets/token-for-reset.png`.
-- After that using the link we can route to reset password page `../src/assets/forgot-password.png`.
-- After that password was sucessfully reseted and token was cleared password was bcrypt(hashed) and stored in database `../src/assets/after-password-reset.png`.
+> [!NOTE]
+> We generate Emails after the successful registration of the user. The application emails the credentials to the user.
+> Incase if the user forgot their password, using the email, we forward them the tokens which will be valid for 3 Hours. Within that three hours, they can use the token to reset their password for the application. Unless it will invalid.

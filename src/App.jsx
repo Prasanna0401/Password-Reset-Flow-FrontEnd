@@ -1,38 +1,28 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import ForgetPassword from './components/ForgetPassword';
-import ResetPassword from './components/ResetPassword';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-const routes = [
-  {
-    path: "/",
-    element: <ForgetPassword />,
-  },
-  {
-    path: "/reset-password/:token",
-    element: <ResetPassword />
-  }
-];
-
-const router = createBrowserRouter(routes, {
-  future: {
-    v7_relativeSplatPath: true,
-    v7_fetcherPersist: true,
-    v7_normalizeFormMethod: true,
-    v7_partialHydration: true,
-    v7_skipActionStatusRevalidation: true,
-    v7_skipActionErrorRevalidation: true,
-  }
-});
+import HomePage from './components/HomePage';
+import SignIn from './components/SignIn';
+import RegistrationForm from './components/RegistrationForm';
+import UserDetails from './components/UserDetails';
+import PasswordReset from './components/PasswordReset';
 
 const App = () => {
+
   return (
-    <RouterProvider
-      router={router}
-      future={{
-        v7_startTransition: true,
-      }}
-    />
+    <>
+      <BrowserRouter>
+
+        <Routes>
+          <Route path='/' element={<HomePage />}> </Route>
+          <Route path='/signin' element={<SignIn />}> </Route>
+          <Route path='/register' element={<RegistrationForm />}> </Route>
+          <Route path='/userInfo' element={<UserDetails />}> </Route>
+          <Route path='/PasswordReset' element={<PasswordReset />}> </Route>
+        </Routes>
+
+      </BrowserRouter>
+    </>
   )
 }
 
-export default App;
+export default App
